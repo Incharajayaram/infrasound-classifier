@@ -1,0 +1,43 @@
+{
+  "accuracy": 0.5756560580681184,
+  "macro_f1": 0.535762163206774,
+  "per_class": {
+    "explosion": {
+      "precision": 0.4317925591882751,
+      "recall": 0.3845381526104418,
+      "f1": 0.4067976633032395,
+      "support": 2988
+    },
+    "rocket_bolide": {
+      "precision": 0.5069297627437163,
+      "recall": 0.5925315760571115,
+      "f1": 0.5463982782630713,
+      "support": 3642
+    },
+    "background": {
+      "precision": 0.6668016194331984,
+      "recall": 0.6418550272798129,
+      "f1": 0.6540905480540111,
+      "support": 7698
+    }
+  },
+  "mean_softmax_confidence": {
+    "correct": 0.6497102975845337,
+    "wrong": 0.5936161875724792
+  },
+  "event_level_accuracy": 0.7705882352941177,
+  "note": "Window-level metrics. Event-level accuracy uses majority vote across all windows for the same recording \u2014 this matches benchmark reporting. Calibration alpha=0.7 applied (adjusts for train/test class prior mismatch).",
+  "tflite_export": {
+    "model_size_kb": 141.7,
+    "quantization": "dynamic-range (weight int8, float32 I/O)",
+    "float32_accuracy": 0.5018146286990508,
+    "tflite_accuracy": 0.4988135120044668,
+    "accuracy_drop": 0.003,
+    "mean_host_latency_ms": 0.098,
+    "inputs": {
+      "psd_input": "shape (1,129,1) float32 \u2014 standardised log10-Welch-PSD per frequency bin",
+      "td_input": "shape (1,10)   float32 \u2014 standardised [log_crest, kurtosis, skewness, log_rms, centroid, flatness, frac_low, frac_mid, frac_high, log_zcr]"
+    },
+    "esp32s3_note": "240 MHz LX7. Host latency \u00d7 ~20 \u2248 on-device estimate. Dynamic-range quantisation: weights are int8, activations are float32. For full int8 inference on TFLite Micro, retrain with int8 aware training."
+  }
+}
